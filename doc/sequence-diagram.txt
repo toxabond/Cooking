@@ -1,0 +1,29 @@
+@startuml
+actor       User
+User -> IHandler: Click
+activate IHandler
+
+
+IHandler -> IChoiceStrategy : GetActualTarget
+activate IChoiceStrategy 
+IHandler <-- IChoiceStrategy
+deactivate IChoiceStrategy 
+
+IHandler -> IChoiceStrategy : GetActualExternalTarget
+activate IChoiceStrategy 
+IHandler <-- IChoiceStrategy
+deactivate IChoiceStrategy 
+
+IHandler -> MainController:Execute
+activate MainController
+MainController -> GameObject : Next|External|Create|Apply
+activate GameObject
+MainController <-- GameObject
+deactivate GameObject
+MainController -> ItemModel: SetItemType
+
+IHandler <-- MainController 
+deactivate MainController
+
+deactivate IHandler
+@enduml

@@ -1,0 +1,26 @@
+{
+	
+	"idZone":0,
+    "levelTime":300,
+    "characterPlaceAmount":4,
+    "glassPlaceAmount":3,
+    "meatPlaceAmount":3,
+    "burgerPlaceAmount":3,
+    "hotdogPlaceAmount":3,
+    "sausagePlaceAmount":3,
+    "frenchFriesPlaceAmount":3,
+    
+    "isGenerateLevel":true,
+    "generationConfiguration":{
+		"characterAmount":10,
+    
+		"glassAmount":100,
+		"burgerAmount":50,
+		"hotdogAmount": 50,
+		"frenchFriesAmount":70
+	},
+	
+	
+	
+    "characterConfigs":{}
+}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee22a47b30964d9449594cd9e5b86d7e, type: 3}
+  m_Name: GameSettingsInstaller
+  m_EditorClassIdentifier: 
+  level: {fileID: 11400000, guid: 3bcbfd9cd6cb93d4cbfac89ea94fd68e, type: 2}
+  prefabsCollection:
+    characterCollection:
+    - {fileID: 1092722128275475854, guid: bc75c12b428442e4b894cf2993ee9802, type: 3}
+    - {fileID: 3732095964790492690, guid: 5bc55bc16de7f9d498183351447eeac4, type: 3}
+    - {fileID: 1283204409417447037, guid: acdfcc7070f39e74fbfffd4d2222a296, type: 3}
+    - {fileID: 6854821582892687787, guid: 880c5f943458fdb4ba535725b22be343, type: 3}
+    food:
+      glass: {fileID: 3078323857627260905, guid: 20d126da044e4a74185e91ec2a58a14a, type: 3}
+      burger: {fileID: 8020493062263773156, guid: ea145658d4a211d4c88ffed2aa918f37, type: 3}
+      meat: {fileID: 3217347481425978850, guid: f5453e6a5d3aa9942825f1b50f38db14, type: 3}
+      hotdog: {fileID: 3078323857627260905, guid: 01895c65a8414d045a9d1d739e43f019, type: 3}
+      sausage: {fileID: 3217347481425978850, guid: 5776621f7cf4194488c7a6c704e67f0c, type: 3}
+      frenchFries: {fileID: 3078323857627260905, guid: 88d92fb61a9106748b8958c4c0f0a101, type: 3}
+    foodIcon:
+      glassIcon: {fileID: 5683287940218179397, guid: c859bc07e706642438fd9e1e4107e23c, type: 3}
+      burgerIcon: {fileID: 8447250376449451687, guid: 27c5a61d9a2098145afcd5ef80800a82, type: 3}
+      hotdogIcon: {fileID: 936946271937433832, guid: 1dc9a94640ef94045a1b6c39e7a67053, type: 3}
+      frenchFriesIcon: {fileID: 1908632454398725784, guid: 8f520e0dd51982c438bd201770bbdd2e, type: 3}
+    simpleIndicator: {fileID: 788358301081069295, guid: 093220a9cac10cf40beb4d05c9914f65, type: 3}
+  characterSetting:
+    moveTime: 3
+    waitTime: 45
+  glassSetting:
+    duration: 5
+  meatSetting:
+    duration: 1.5
+  frenchFriesSetting:
+    duration: 1.5

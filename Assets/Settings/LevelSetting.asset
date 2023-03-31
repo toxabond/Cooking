@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73fabeae0cd441f8bf6c385cac9a6d4, type: 3}
+  m_Name: LevelSetting
+  m_EditorClassIdentifier: 
+  externalUrl: https://raw.githubusercontent.com/toxabond/Cooking/main/level.json
+  isUseLocalLevel: 0
+  levelConfig:
+    idZone: 0
+    levelTime: 300
+    characterPlaceAmount: 4
+    glassPlaceAmount: 3
+    meatPlaceAmount: 3
+    burgerPlaceAmount: 3
+    hotdogPlaceAmount: 3
+    sausagePlaceAmount: 3
+    frenchFriesPlaceAmount: 3
+    isGenerateLevel: 1
+    generationConfiguration:
+      characterAmount: 10
+      glassAmount: 100
+      burgerAmount: 50
+      hotdogAmount: 50
+      frenchFriesAmount: 70
+    characterConfigs:
+    - createdTime: 0
+      type: 0
+      position: 2
+      inventory: 000000000300000001000000
