@@ -101,10 +101,10 @@
      <Compile Include="Assets\Script\Elements\Inventory.cs" />
      <Compile Include="Assets\Script\Elements\BaseItem.cs" />
      <Compile Include="Assets\Script\EnumCollection\RewardFoodType.cs" />
-     <Compile Include="Assets\Script\Main\ItemModels\ITickableUpdate.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ITickableUpdate.cs" />
      <Compile Include="Assets\Script\Main\Core\UICollection.cs" />
      <Compile Include="Assets\Script\Main\ItemModels\Model.cs" />
-     <Compile Include="Assets\Script\Main\ItemModels\ITimerContainer.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ITimerContainer.cs" />
      <Compile Include="Assets\Script\Main\ItemModels\LevelModel.cs" />
      <Compile Include="Assets\Script\EnumCollection\ModifyItemType.cs" />
      <Compile Include="Assets\Script\Main\Contract\IHandler.cs" />
@@ -116,6 +116,14 @@
      <Compile Include="Assets\Script\UI\Indicator.cs" />
      <Compile Include="Assets\Script\Zones\Zone00\Zone00Initializer.cs" />
      <Compile Include="Assets\Script\Main\Core\MainController.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ILoader.cs" />
+     <Compile Include="Assets\Script\Main\Calculators\CharacterCalculator.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ICharacterGenerator.cs" />
+     <Compile Include="Assets\Script\Main\Calculators\LevelCalculator.cs" />
+     <Compile Include="Assets\Script\Main\Calculators\CharacterItemCalculator.cs" />
+     <Compile Include="Assets\Script\Main\Calculators\GameCalculator.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ICharacterCalculator.cs" />
+     <Compile Include="Assets\Script\Main\Contract\ITickableCheck.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

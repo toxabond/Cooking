@@ -3,7 +3,7 @@
     using UnityEngine;
     using UnityEngine.Networking;
 
-    public class Loader
+    public class Loader : ILoader
     {
         public async Task<string> LoadDataByTask(string path)  
         {
@@ -31,4 +31,3 @@
         }
 
     }
-

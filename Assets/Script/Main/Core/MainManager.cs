@@ -17,12 +17,14 @@ public class MainManager : MonoBehaviour, IGameEvents
     [SerializeField] private PopupManager popupManager;
 
 
-    [Inject] private Loader _loader;
-    [Inject] private CharacterGenerator _generator;
+    [Inject] private ILoader _loader;
     [Inject] private LevelSetting _level;
     [Inject] private Zone00Initializer _initializer;
     [Inject] private GameModel _gameModel;
-    
+
+    [Inject] private List<ITickableUpdate> _tickableUpdateList;
+    [Inject] private List<ITickableCheck> _tickableCheckList;
+
     private Zone _zone;
     private LevelConfig _levelConfig;
 
@@ -40,17 +42,17 @@ public class MainManager : MonoBehaviour, IGameEvents
 
     private void OnEnable()
     {
-        popupManager.StartGameEvent += OnStartAmeEvent;
+        popupManager.StartGameEvent += OnStartGameEvent;
         popupManager.RestartGameEvent += OnRestartGameEvent;
     }
 
     private void OnDisable()
     {
-        popupManager.StartGameEvent -= OnStartAmeEvent;
+        popupManager.StartGameEvent -= OnStartGameEvent;
         popupManager.RestartGameEvent -= OnRestartGameEvent;
     }
 
-    private void OnStartAmeEvent()
+    private void OnStartGameEvent()
     {
         if (_zone != null)
         {
@@ -72,7 +74,7 @@ public class MainManager : MonoBehaviour, IGameEvents
 
     private void OnRestartGameEvent()
     {
-        OnStartAmeEvent();
+        OnStartGameEvent();
     }
 
     private void Update()
@@ -83,9 +85,9 @@ public class MainManager : MonoBehaviour, IGameEvents
             {
                 return;
             }
-
-            _gameModel.UpdateByDeltaTimer(Time.deltaTime);
-            _generator.UpdateByDeltaTimer(Time.deltaTime);
+            
+            _tickableUpdateList.ForEach(t=>t.UpdateByDeltaTimer(Time.deltaTime));
+            _tickableCheckList.ForEach(t=>t.Check());
 
             if (_gameModel.GameState == GameState.GameOver)
             {

@@ -4,9 +4,10 @@ using Zenject;
 
 public class Zone00Initializer
 {
-    [Inject] public GameBuilder Builder;
-    [Inject] public GameFactory Factory;
-    [Inject] public CharacterGenerator Generator;
+    [Inject] public IGameBuilder Builder;
+    [Inject] public IGameFactory Factory;
+    [Inject] public ICharacterGenerator CharacterGenerator;
+    [Inject] public ICharacterCalculator CharacterGeneratorCalculator;
     private Zone00UIWrapper _ui;
     private LevelConfig _config;
 
@@ -14,8 +15,10 @@ public class Zone00Initializer
     {
         _config = levelConfig;
         _ui = new Zone00UIWrapper(uiElements);
-        Factory.StartCharacterPlace = _ui.StartCharacterPlace;
-        Generator.Init(levelConfig, _ui.CharacterPlace, gameModel);
+        Factory.Init(_ui.StartCharacterPlace);
+        
+        CharacterGenerator.Init(levelConfig, _ui.CharacterPlace, gameModel);
+        CharacterGeneratorCalculator.Init(levelConfig);
 
         CreateGlass();
         CreateMeat();

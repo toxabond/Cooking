@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class GameBuilder
+public class GameBuilder : IGameBuilder
 {
     [Inject]public GamedBind GamedBind;
-    [Inject]public GameFactory Factory;
+    [Inject]public IGameFactory Factory;
 
     
     // bind.BindPlaceWithView(new Place(2, 0), new ViewData(_ui.MeatPlace[0], null));
@@ -62,4 +62,15 @@ public class GameBuilder
         return this;
     }
 
+}
+
+public interface IGameBuilder
+{
+    GameBuilder BindPlaceWithGameObjectModel(int idGroup, List<Transform> placeList, int fromIndex = 0,
+        int toIndex = -1,
+        ItemType itemType = ItemType.None);
+
+    GameBuilder SubscriptionExternal(int idGroup, List<Button> button, int fromIndex, int externalIdGroup,
+        int externalFromIndex, int externalToIndex,
+        IChoiceStrategy strategy = null);
 }

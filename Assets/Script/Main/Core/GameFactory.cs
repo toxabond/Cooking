@@ -4,29 +4,34 @@ using Script.Core.Character;
 using UnityEngine;
 using Zenject;
 
-public class GameFactory
+public class GameFactory : IGameFactory
 {
     [Inject] private GameModel _gameModel;
     [Inject] private MainController _main;
     [Inject] private FoodItem.Factory _foodFactory;
     [Inject] private BaseCharacter.Factory _characterFactory;
     [Inject] private CharacterSetting _characterSetting;
-    public Transform StartCharacterPlace;
+    private Transform _startCharacterPlace;
 
-    public List<CharacterBlock> CreateCharacterBlocks(List<CharacterBlockConfig> characterBlockConfigs,
+    public void Init(Transform startCharacterPlace)
+    {
+        _startCharacterPlace = startCharacterPlace;
+    }
+
+    private List<CharacterBlock> CreateCharacterBlocks(List<CharacterBlockConfig> characterBlockConfigs,
         List<Transform> characterPlace)
     {
         var list = new List<CharacterBlock>();
         foreach (var config in characterBlockConfigs)
         {
             var foodItems = config.inventory.Select(i => GameUtil.MapperRewardFoodTypeToItemType[i]).ToList();
-            list.Add(CreateCharacterBlock(config,characterPlace[config.position]));
+            list.Add(CreateCharacterBlock(config, characterPlace[config.position]));
         }
 
         return list;
     }
 
-    public CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig,  Transform place)
+    public CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place)
     {
         var foodItems = characterBlockConfig.inventory.Select(i => GameUtil.MapperRewardFoodTypeToItemType[i]).ToList();
         return new CharacterBlock(characterBlockConfig.createdTime, characterBlockConfig.position,
@@ -39,8 +44,8 @@ public class GameFactory
         var inventory = new InventoryModel(inventoryItemList);
         var itemModel = new CharacterItemModel(ItemType.CreatedCharacter, inventory, _characterSetting);
 
-        var character = CreateGameObjectCharacter(characterType, StartCharacterPlace);
-        character.startPosition = StartCharacterPlace;
+        var character = CreateGameObjectCharacter(characterType, _startCharacterPlace);
+        character.startPosition = _startCharacterPlace;
         character.targetPosition = characterPlace;
         character.inventory.InitItems(inventory.CurrentItemList);
         var gameObjectModel = new CharacterGameObjectModel(characterPlace, character);
@@ -149,4 +154,27 @@ public class GameFactory
         var pos = RectTransformUtility.WorldToScreenPoint(current, screenToWorldPosition);
         item.position = pos;
     }
+}
+
+public interface IGameFactory
+{
+    void Init(Transform startCharacterPlace);
+
+    IHandler CreateFrenchFriesHandler(int idGroup, int index, int externalIdGroup, int externalFromIndex,
+        int externalToIndex);
+
+    T CreateHandlerOnlyExternal<T>(ModifyItemType modifyItemType,
+        int externalIdGroup, int externalFromIndex, int externalToIndex,
+        IChoiceStrategy strategy = null) where T : BaseHandler, new();
+
+    IHandler CreateGlassHandler(int idGroup, int index, int externalIdGroup, int externalFromIndex,
+        int externalToIndex);
+
+    T CreateHandler<T>(ModifyItemType modifyItemType, int idGroup, int fromIndex, int toIndex,
+        int externalIdGroup,
+        int externalFromIndex, int externalToIndex, IChoiceStrategy strategy = null) where T : BaseHandler, new();
+
+    CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place);
+
+    FoodItem CreateItem(ItemType itemType, Transform transform);
 }

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-public class ItemModel : ITimerContainer, ITickableUpdate
+public class ItemModel : ITimerContainer
 {
     public ItemType FromItemType;
     public ItemType ToItemType;
@@ -39,11 +39,7 @@ public class ItemModel : ITimerContainer, ITickableUpdate
     {
         Inventory.Reset();
     }
-
-    public virtual void UpdateByDeltaTimer(float delta)
-    {
-    }
-
+    
     public void SetItemType(ItemType itemType)
     {
         FromItemType = itemType;
