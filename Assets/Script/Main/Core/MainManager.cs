@@ -6,20 +6,18 @@ using Zenject;
 
 public class MainManager : MonoBehaviour, IGameEvents
 {
-    
     public event Action ReadyGameEvent = delegate { };
     public event Action GameOverEvent = delegate { };
     public event Action WinGameEvent = delegate { };
 
-    [SerializeField] private List<Zone> zoneCollection;
     [SerializeField] private UICollection uiCollection;
     [SerializeField] private GameObject zoneHolder;
     [SerializeField] private PopupManager popupManager;
 
-
     [Inject] private ILoader _loader;
+    [Inject] private ZoneCollectionSetting _zoneCollection;
     [Inject] private LevelSetting _level;
-    [Inject] private Zone00Initializer _initializer;
+    [Inject] private IZoneInitializer _initializer;
     [Inject] private GameModel _gameModel;
 
     [Inject] private List<ITickableUpdate> _tickableUpdateList;
@@ -33,11 +31,13 @@ public class MainManager : MonoBehaviour, IGameEvents
         if (_level.isUseLocalLevel)
         {
             _levelConfig = _level.levelConfig;
-            ReadyGameEvent();
-        }else{
-            _levelConfig = JsonUtility.FromJson<LevelConfig>(await _loader.LoadDataByTask(_level.externalUrl));
-            ReadyGameEvent();
         }
+        else
+        {
+            _levelConfig = JsonUtility.FromJson<LevelConfig>(await _loader.LoadDataByTask(_level.externalUrl));
+        }
+
+        ReadyGameEvent();
     }
 
     private void OnEnable()
@@ -59,7 +59,7 @@ public class MainManager : MonoBehaviour, IGameEvents
             Destroy(_zone.gameObject);
         }
 
-        _zone = Instantiate(zoneCollection[_levelConfig.idZone], zoneHolder.transform);
+        _zone = Instantiate(_zoneCollection.zoneCollection[_levelConfig.idZone], zoneHolder.transform);
         var uiElements = _zone.gameObject.GetComponentInChildren<IUIElements>();
 
         var levelModel = new LevelModel(new Timer(_levelConfig.levelTime));
@@ -68,7 +68,7 @@ public class MainManager : MonoBehaviour, IGameEvents
 
         uiCollection.CharacterProgress.Bind(_gameModel);
         uiCollection.GameTimerProgress.Bind(_gameModel);
-        
+
         _initializer.Init(_levelConfig, _gameModel, uiElements);
     }
 
@@ -85,9 +85,9 @@ public class MainManager : MonoBehaviour, IGameEvents
             {
                 return;
             }
-            
-            _tickableUpdateList.ForEach(t=>t.UpdateByDeltaTimer(Time.deltaTime));
-            _tickableCheckList.ForEach(t=>t.Check());
+
+            _tickableUpdateList.ForEach(t => t.UpdateByDeltaTimer(Time.deltaTime));
+            _tickableCheckList.ForEach(t => t.Check());
 
             if (_gameModel.GameState == GameState.GameOver)
             {

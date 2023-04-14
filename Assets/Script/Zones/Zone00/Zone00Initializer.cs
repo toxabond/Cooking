@@ -2,7 +2,7 @@
 using Script.Core.Interface;
 using Zenject;
 
-public class Zone00Initializer
+public class Zone00Initializer : IZoneInitializer
 {
     [Inject] public IGameBuilder Builder;
     [Inject] public IGameFactory Factory;

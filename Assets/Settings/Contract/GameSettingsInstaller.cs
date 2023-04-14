@@ -4,7 +4,9 @@ using Zenject;
 [CreateAssetMenu(fileName = "GameSettingsInstaller", menuName = "Installers/GameSettingsInstaller")]
 public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
 {
+    [SerializeField] private ZoneCollectionSetting zoneCollectionSetting;
     [SerializeField] private LevelSetting level;
+    
     [SerializeField] private PrefabsCollection prefabsCollection;
 
 
@@ -16,8 +18,6 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
 
     public override void InstallBindings()
     {
-        // Container.Bind<IndicatorAnimation>();
-        // Container.BindFactory<IndicatorAnimation, IndicatorAnimation.Factory>();
         Container.Bind<IndicatorAnimation>().To<IndicatorAnimation>().AsCached();
         Container.Bind<ILoader>().To<Loader>().AsSingle();
         Container.Bind<MainController>().To<MainController>().AsSingle();
@@ -31,16 +31,15 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         Container.Bind(typeof(ITickableUpdate), typeof(ITickableCheck)).To<LevelCalculator>().AsSingle();
         Container.Bind<ITickableUpdate>().To<GameCalculator>().AsSingle();
         Container.Bind<ITickableUpdate>().To<CharacterItemCalculator>().AsSingle();
-        // Container.Bind<ITickableUpdate>().To<CharacterCalculator>().AsSingle();
 
-
-        Container.Bind<Zone00Initializer>().To<Zone00Initializer>().AsSingle();
+        Container.Bind<IZoneInitializer>().To<Zone00Initializer>().AsSingle();
         Container.Bind<GameModel>().To<GameModel>().AsSingle();
 
         Container.BindInstance(prefabsCollection).AsSingle();
         Container.BindInstance(glassSetting).AsSingle();
         Container.BindInstance(frenchFriesSetting).AsSingle();
         Container.Bind<LevelSetting>().FromInstance(level).AsSingle();
+        Container.Bind<ZoneCollectionSetting>().FromInstance(zoneCollectionSetting).AsSingle();
         Container.Bind<MeatSetting>().FromInstance(meatSetting).AsSingle();
         Container.Bind<CharacterSetting>().FromInstance(characterSetting).AsSingle();
     }

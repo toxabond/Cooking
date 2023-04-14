@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelSetting
   m_EditorClassIdentifier: 
   externalUrl: https://raw.githubusercontent.com/toxabond/Cooking/main/level.json
-  isUseLocalLevel: 0
+  isUseLocalLevel: 1
   levelConfig:
     idZone: 0
     levelTime: 300

@@ -67,7 +67,7 @@
      <Compile Include="Assets\Settings\Contract\MainSetting.cs" />
      <Compile Include="Assets\Script\Character\BaseCharacter.cs" />
      <Compile Include="Assets\Script\UI\GameTimerProgress.cs" />
-     <Compile Include="Assets\Settings\MainInstaller.cs" />
+     <Compile Include="Assets\Settings\Contract\MainInstaller.cs" />
      <Compile Include="Assets\Script\Handlers\StrategyCollection\LowerTimeStrategy.cs" />
      <Compile Include="Assets\Script\Elements\BasePopup.cs" />
      <Compile Include="Assets\Settings\Contract\CharacterBlockConfig.cs" />
@@ -86,7 +86,7 @@
      <Compile Include="Assets\Script\Elements\WelcomePopup.cs" />
      <Compile Include="Assets\Settings\SubSettings\GlassSetting.cs" />
      <Compile Include="Assets\Script\Main\Core\GameFactory.cs" />
-     <Compile Include="Assets\Settings\GameSettingsInstaller.cs" />
+     <Compile Include="Assets\Settings\Contract\GameSettingsInstaller.cs" />
      <Compile Include="Assets\Script\Character\CharacterFactory.cs" />
      <Compile Include="Assets\Settings\SubSettings\FrenchFriesSetting.cs" />
      <Compile Include="Assets\Script\Main\Contract\IChoiceStrategy.cs" />
@@ -124,6 +124,8 @@
      <Compile Include="Assets\Script\Main\Calculators\GameCalculator.cs" />
      <Compile Include="Assets\Script\Main\Contract\ICharacterCalculator.cs" />
      <Compile Include="Assets\Script\Main\Contract\ITickableCheck.cs" />
+     <Compile Include="Assets\Settings\Contract\ZoneCollectionSetting.cs" />
+     <Compile Include="Assets\Script\Main\Contract\IZoneInitializer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

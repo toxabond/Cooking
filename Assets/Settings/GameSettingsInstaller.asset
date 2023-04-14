@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee22a47b30964d9449594cd9e5b86d7e, type: 3}
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
+  zoneCollectionSetting: {fileID: 11400000, guid: 999304743c9729044a4f70f7c8daf8bd, type: 2}
   level: {fileID: 11400000, guid: 3bcbfd9cd6cb93d4cbfac89ea94fd68e, type: 2}
   prefabsCollection:
     characterCollection:
