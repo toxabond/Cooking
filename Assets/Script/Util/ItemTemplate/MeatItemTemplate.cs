@@ -10,7 +10,7 @@ public class MeatItemTemplate : IItemTemplate
         };
     }
 
-    public Dictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
+    public IReadOnlyDictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
     {
         return null;
     }
@@ -25,7 +25,7 @@ public class MeatItemTemplate : IItemTemplate
         return null;
     }
 
-    public Dictionary<ItemType, ItemType> GetItemTypeToNextItemType()
+    public IReadOnlyDictionary<ItemType, ItemType> GetItemTypeToNextItemType()
     {
         return new Dictionary<ItemType, ItemType>()
         {

@@ -8,18 +8,18 @@ using Random = UnityEngine.Random;
 
 public class CharacterGenerator : ICharacterGenerator
 {
-    [Inject] public IMainController Main;
-    [Inject] public GamedBind GamedBind;
-    [Inject] public IGameFactory Factory;
+    [Inject] private IMainController _main;
+    [Inject] private GamedBind _gamedBind;
+    [Inject] private IGameFactory _factory;
 
     private List<CharacterBlockConfig> _blockList;
-    private List<Transform> _uiCharacterPlace;
+    private IReadOnlyList<Transform> _uiCharacterPlace;
 
     private int _currentIndex;
 
     private GameModel _gameModel;
 
-    public void Init(LevelConfig levelConfig, List<Transform> uiCharacterPlace, GameModel gameModel)
+    public void Init(LevelConfig levelConfig, IReadOnlyList<Transform> uiCharacterPlace, GameModel gameModel)
     {
         _currentIndex = 0;
 
@@ -92,11 +92,11 @@ public class CharacterGenerator : ICharacterGenerator
     {
         if (!_gameModel.ContainsKey(place) || _gameModel.GetItemModelByPlace(place).Type != ItemType.Character)
         {
-            var characterBlock = Factory.CreateCharacterBlock(block, _uiCharacterPlace[block.position]);
-            GamedBind.BindPlaceWithGameObject(place, characterBlock.Model.GameObjectModel);
-            GamedBind.BindPlaceWithItemModel(place, characterBlock.Model.ItemModel);
+            var model = _factory.CreateCharacterBlock(block, _uiCharacterPlace[block.position]);
+            _gamedBind.BindPlaceWithGameObject(place, model.GameObjectModel);
+            _gamedBind.BindPlaceWithItemModel(place, model.ItemModel);
 
-            Main.Execute(ModifyItemType.Next, place, null);
+            _main.Execute(ModifyItemType.Next, place, null);
             return true;
         }
 

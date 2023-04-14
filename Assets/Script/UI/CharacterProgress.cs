@@ -8,7 +8,7 @@ public class CharacterProgress : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     private GameModel _gameModel;
 
-    public void Bind(GameModel gameModel)
+    public void Init(GameModel gameModel)
     {
         _gameModel = gameModel;
     }

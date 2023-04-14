@@ -5,10 +5,10 @@ public class GameModel
 {
     public GameState GameState = GameState.Pause;
     public bool IsActiveInput;
-    public Dictionary<int, Model> Models;
-    public LevelModel Level;
-    public CharacterModel CharacterModel;
     public float GameTime;
+    public Dictionary<int, Model> Models { get; private set; }
+    public LevelModel Level { get; private set; }
+    public CharacterModel CharacterModel { get; private set; }
 
     public void Init(LevelModel level, CharacterModel characterModel)
     {

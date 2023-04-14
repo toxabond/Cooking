@@ -3,13 +3,13 @@ using System.Linq;
 
 public class InventoryModel
 {
-    private readonly ItemType[] ItemList;
-    public List<ItemType> CurrentItemList;
-    public List<ItemType> AppliedItemList;
+    private readonly ItemType[] _itemList;
+    public List<ItemType> CurrentItemList { get; private set; }
+    public List<ItemType> AppliedItemList { get; private set; }
 
-    public InventoryModel(List<ItemType> itemTypes)
+    public InventoryModel(IReadOnlyList<ItemType> itemTypes)
     {
-        ItemList = itemTypes.ToArray();
+        _itemList = itemTypes.ToArray();
         CurrentItemList = itemTypes.ToList();
         AppliedItemList = new List<ItemType>();
     }
@@ -27,7 +27,7 @@ public class InventoryModel
 
     public void Reset()
     {
-        CurrentItemList = ItemList.ToList();
+        CurrentItemList = _itemList.ToList();
         AppliedItemList = new List<ItemType>();
     }
 

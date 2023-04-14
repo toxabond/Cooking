@@ -2,27 +2,27 @@
 using UnityEngine;
 using Zenject;
 
-public class FoodIconItemFactory<T> : IFactory<ItemType, T> where T:BaseItem{
-    [Inject] private PrefabsCollection _prefabs;
-    [Inject]
-    readonly DiContainer _container = null;
+public class FoodIconItemFactory<T> : IFactory<ItemType, T> where T : BaseItem
+{
+    private readonly DiContainer _container;
+    private readonly Dictionary<ItemType, GameObject> _itemTypeToGameObjectMapper;
 
-    public DiContainer Container
+    public FoodIconItemFactory(PrefabsCollection prefabs, DiContainer container)
     {
-        get { return _container; }
+        _container = container;
+        _itemTypeToGameObjectMapper = new Dictionary<ItemType, GameObject>()
+        {
+            { ItemType.FullGlass, prefabs.foodIcon.glassIcon },
+            { ItemType.Burger, prefabs.foodIcon.burgerIcon },
+            { ItemType.Hotdog, prefabs.foodIcon.hotdogIcon },
+            { ItemType.FullFrenchFries, prefabs.foodIcon.frenchFriesIcon },
+        };
     }
-        
-        
+
     public T Create(ItemType itemType)
     {
-        var mapper = new Dictionary<ItemType, GameObject>()
-        {
-            { ItemType.FullGlass, _prefabs.foodIcon.glassIcon },
-            { ItemType.Burger, _prefabs.foodIcon.burgerIcon },
-            { ItemType.Hotdog, _prefabs.foodIcon.hotdogIcon },
-            { ItemType.FullFrenchFries, _prefabs.foodIcon.frenchFriesIcon },
-        };
-        var instantiatePrefabForComponent = _container.InstantiatePrefabForComponent<T>(mapper[itemType]);
+        var instantiatePrefabForComponent =
+            _container.InstantiatePrefabForComponent<T>(_itemTypeToGameObjectMapper[itemType]);
         instantiatePrefabForComponent.itemType = itemType;
         return instantiatePrefabForComponent;
     }

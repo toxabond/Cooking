@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Script.Core.Interface;
 using UnityEngine;
 using Zenject;
 
@@ -66,8 +65,8 @@ public class MainManager : MonoBehaviour, IGameEvents
         var characterModel = new CharacterModel(_levelConfig.CharacterAmount);
         _gameModel.Init(levelModel, characterModel);
 
-        uiCollection.characterProgress.Bind(_gameModel);
-        uiCollection.gameTimerProgress.Bind(_gameModel);
+        uiCollection.characterProgress.Init(_gameModel);
+        uiCollection.gameTimerProgress.Init(_gameModel);
 
         _initializer.Init(_levelConfig, _gameModel, uiElements);
     }

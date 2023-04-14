@@ -70,7 +70,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
     
     private void InstallAnalyzer()
     {
-        Container.Bind<IFoodAnalyzer>().To<FoodAnalyzer>().AsSingle();
+        Container.Bind<IFoodAnalyzer>().To<FoodAnalyzer>().AsSingle().NonLazy();
     }
 
 }

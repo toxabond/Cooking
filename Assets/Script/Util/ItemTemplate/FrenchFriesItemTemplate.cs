@@ -10,7 +10,7 @@ public class FrenchFriesItemTemplate : IItemTemplate
         };
     }
 
-    public Dictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
+    public IReadOnlyDictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
     {
         return new Dictionary<RewardFoodType, ItemType>()
         {
@@ -28,7 +28,7 @@ public class FrenchFriesItemTemplate : IItemTemplate
         return null;
     }
 
-    public Dictionary<ItemType, ItemType> GetItemTypeToNextItemType()
+    public IReadOnlyDictionary<ItemType, ItemType> GetItemTypeToNextItemType()
     {
         return new Dictionary<ItemType, ItemType>()
         {

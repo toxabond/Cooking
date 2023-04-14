@@ -9,17 +9,17 @@ public class Inventory : MonoBehaviour
     private List<FoodIconItem> _activeItemCollection;
     [Inject] private FoodIconItem.Factory _foodIconItemFactory;
 
-    public void Init(List<ItemType> itemList)
+    public void Init(IEnumerable<ItemType> itemList)
     {
         _activeItemCollection = new List<FoodIconItem>();
-        itemList.ForEach(itemType =>
+        foreach (var itemType in itemList)
         {
             var icon = _foodIconItemFactory.Create(itemType);
             _activeItemCollection.Add(icon);
             var iconTransform = icon.transform;
             iconTransform.SetParent(holder.transform);
             iconTransform.localScale = Vector3.one;
-        });
+        }
     }
 
     public void ApplyItem(ItemType itemType, Action action)

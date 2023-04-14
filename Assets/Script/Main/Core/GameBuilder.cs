@@ -5,11 +5,11 @@ using Zenject;
 
 public class GameBuilder : IGameBuilder
 {
-    [Inject]public GamedBind GamedBind;
-    [Inject]public IGameFactory Factory;
+    [Inject]private GamedBind _gamedBind;
+    [Inject]private IGameFactory _factory;
 
     
-    public GameBuilder BindPlaceWithGameObjectModel(int idGroup, List<Transform> placeList, int fromIndex = 0,int toIndex=-1,
+    public GameBuilder BindPlaceWithGameObjectModel(int idGroup, IReadOnlyList<Transform> placeList, int fromIndex = 0,int toIndex=-1,
         ItemType itemType = ItemType.None)
     {
         if (toIndex == -1)
@@ -18,8 +18,8 @@ public class GameBuilder : IGameBuilder
         }
         for (var i = fromIndex; i <= toIndex; i++)
         {
-            var food = itemType == ItemType.None ? null : Factory.CreateItem(itemType, placeList[i]);
-            GamedBind.BindPlaceWithGameObject(new Place(idGroup, i), new GameObjectModel(placeList[i], food));
+            var food = itemType == ItemType.None ? null : _factory.CreateItem(itemType, placeList[i]);
+            _gamedBind.BindPlaceWithGameObject(new Place(idGroup, i), new GameObjectModel(placeList[i], food));
         }
 
         return this;
@@ -31,7 +31,7 @@ public class GameBuilder : IGameBuilder
         {
             var itemModel = new ItemModel(itemType, GameUtil.CreateInventory(itemType));
 
-            GamedBind.BindPlaceWithItemModel(new Place(idGroup, i), itemModel);
+            _gamedBind.BindPlaceWithItemModel(new Place(idGroup, i), itemModel);
         }
 
         return this;
@@ -40,18 +40,18 @@ public class GameBuilder : IGameBuilder
     public GameBuilder Subscription(ModifyItemType modifyItemType, int idGroup, int fromIndex, int toIndex,
         Button button, IChoiceStrategy strategy = null)
     {
-        var handler = Factory.CreateHandler<Handler>(modifyItemType, idGroup, fromIndex, toIndex, -1, 0, 0, strategy);
+        var handler = _factory.CreateHandler<Handler>(modifyItemType, idGroup, fromIndex, toIndex, -1, 0, 0, strategy);
         button.onClick.AddListener(() => { handler.Execute(); });
         return this;
     }
 
-    public GameBuilder SubscriptionExternal(int idGroup, List<Button> button, int fromIndex, int externalIdGroup,
+    public GameBuilder SubscriptionExternal(int idGroup, IReadOnlyList<Button> button, int fromIndex, int externalIdGroup,
         int externalFromIndex, int externalToIndex,
         IChoiceStrategy strategy = null)
     {
         for (var i = fromIndex; i < button.Count; i++)
         {
-            var handler = Factory.CreateHandler<Handler>(ModifyItemType.External, idGroup, i - fromIndex, i - fromIndex,
+            var handler = _factory.CreateHandler<Handler>(ModifyItemType.External, idGroup, i - fromIndex, i - fromIndex,
                 externalIdGroup, externalFromIndex, externalToIndex, strategy);
 
             button[i].onClick.AddListener(() => { handler.Execute(); });
@@ -64,11 +64,11 @@ public class GameBuilder : IGameBuilder
 
 public interface IGameBuilder
 {
-    GameBuilder BindPlaceWithGameObjectModel(int idGroup, List<Transform> placeList, int fromIndex = 0,
+    GameBuilder BindPlaceWithGameObjectModel(int idGroup, IReadOnlyList<Transform> placeList, int fromIndex = 0,
         int toIndex = -1,
         ItemType itemType = ItemType.None);
 
-    GameBuilder SubscriptionExternal(int idGroup, List<Button> button, int fromIndex, int externalIdGroup,
+    GameBuilder SubscriptionExternal(int idGroup, IReadOnlyList<Button> button, int fromIndex, int externalIdGroup,
         int externalFromIndex, int externalToIndex,
         IChoiceStrategy strategy = null);
 }

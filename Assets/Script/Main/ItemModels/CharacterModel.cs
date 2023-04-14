@@ -1,6 +1,6 @@
 ﻿public class CharacterModel
 {
-    public int Amount;
+    public readonly int Amount;
     public int CurrentAmount;
 
     public CharacterModel(int amount, int currentAmount = 0)

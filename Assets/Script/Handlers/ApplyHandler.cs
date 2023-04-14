@@ -28,7 +28,7 @@ namespace Script.Core.Behaviors
             }
             catch (Exception e)
             {
-                Debug.Log(e);
+                Debug.LogError(e);
                 return false;
             }
         }

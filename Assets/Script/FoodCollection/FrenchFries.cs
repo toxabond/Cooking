@@ -5,11 +5,11 @@ using Zenject;
 public class FrenchFries : FoodItem
 {
     [SerializeField] private Transform indicatorPosition;
-    public GameObject phase0;
-    public GameObject phase1;
-    public GameObject phase2;
+    [SerializeField] private GameObject phase0;
+    [SerializeField] private GameObject phase1;
+    [SerializeField] private GameObject phase2;
+    
     [Inject] private FrenchFriesSetting _glassSetting;
-
     [Inject] private IndicatorAnimation _animation;
 
     public override void Appear(Action action)

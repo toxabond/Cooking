@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GameObjectModel
 {
-    public Transform Transform;
+    public Transform Transform { get; }
     private IItem _item;
+
     public IItem Item
     {
         get => _item;
@@ -15,7 +16,7 @@ public class GameObjectModel
         }
     }
 
-    public event Action<IItem> ChangeItem  = delegate {};
+    public event Action<IItem> ChangeItem = delegate { };
 
     public GameObjectModel(Transform transform, IItem item)
     {

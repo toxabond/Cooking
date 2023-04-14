@@ -26,7 +26,7 @@ public class CharacterCalculator : ICharacterCalculator, ITickableUpdate, ITicka
         CheckWinGame(_gameModel.Models);
     }
 
-    private void CheckWinGame(Dictionary<int, Model> models)
+    private void CheckWinGame(IReadOnlyDictionary<int, Model> models)
     {
         var gameModelCharacterModel = _gameModel.CharacterModel;
         if (_gameModel.GameState == GameState.Playing &&

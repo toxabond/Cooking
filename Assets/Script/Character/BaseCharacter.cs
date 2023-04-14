@@ -2,7 +2,6 @@ using System;
 using DG.Tweening;
 using Script.Core.Character;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -24,7 +23,7 @@ public class BaseCharacter : MonoBehaviour, IItem
     public void Next(ItemType fromItemType, ItemType toItemType, Action action)
     {
         transform.DOMove(targetPosition.position, _characterSetting.moveTime)
-            .OnComplete(()=>action());
+            .OnComplete(() => action());
     }
 
     public void ApplyItem(ItemType itemType, Action action)
@@ -41,8 +40,8 @@ public class BaseCharacter : MonoBehaviour, IItem
                 action();
             });
     }
-    
-    
+
+
     public void Bind(ItemModel modelItemModel)
     {
         _timer = modelItemModel.ItemTimer;

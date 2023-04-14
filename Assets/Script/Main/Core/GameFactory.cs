@@ -18,27 +18,13 @@ public class GameFactory : IGameFactory
         _startCharacterPlace = startCharacterPlace;
     }
 
-    private List<CharacterBlock> CreateCharacterBlocks(List<CharacterBlockConfig> characterBlockConfigs,
-        List<Transform> characterPlace)
-    {
-        var list = new List<CharacterBlock>();
-        foreach (var config in characterBlockConfigs)
-        {
-            var foodItems = config.inventory.Select(i => GameUtil.RewardFoodTypeToItemTypeMapper[i]).ToList();
-            list.Add(CreateCharacterBlock(config, characterPlace[config.position]));
-        }
-
-        return list;
-    }
-
-    public CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place)
+    public Model CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place)
     {
         var foodItems = characterBlockConfig.inventory.Select(i => GameUtil.RewardFoodTypeToItemTypeMapper[i]).ToList();
-        return new CharacterBlock(characterBlockConfig.createdTime, characterBlockConfig.position,
-            CreateCharacter(characterBlockConfig.type, foodItems, place));
+        return CreateCharacter(characterBlockConfig.type, foodItems, place);
     }
 
-    private Model CreateCharacter(CharacterType characterType, List<ItemType> inventoryItemList,
+    private Model CreateCharacter(CharacterType characterType, IReadOnlyList<ItemType> inventoryItemList,
         Transform characterPlace)
     {
         var inventory = new InventoryModel(inventoryItemList);
@@ -136,7 +122,7 @@ public class GameFactory : IGameFactory
         return foodItem;
     }
 
-    public BaseCharacter CreateGameObjectCharacter(CharacterType characterType, Transform position)
+    private BaseCharacter CreateGameObjectCharacter(CharacterType characterType, Transform position)
     {
         var character = _characterFactory.Create(characterType);
 
@@ -174,7 +160,7 @@ public interface IGameFactory
         int externalIdGroup,
         int externalFromIndex, int externalToIndex, IChoiceStrategy strategy = null) where T : BaseHandler, new();
 
-    CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place);
+    Model CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place);
 
     FoodItem CreateItem(ItemType itemType, Transform transform);
 }

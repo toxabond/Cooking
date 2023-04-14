@@ -5,7 +5,7 @@ public class ItemModel : ITimerContainer
     public ItemType FromItemType;
     public ItemType ToItemType;
     public Timer ItemTimer { get; }
-    public InventoryModel Inventory;
+    public InventoryModel Inventory{ get; }
 
     public ItemType Type => FromItemType == ToItemType ? ToItemType : ItemType.Playing;
 

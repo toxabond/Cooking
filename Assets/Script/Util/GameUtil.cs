@@ -14,7 +14,7 @@ public static class GameUtil
         ItemType.DestroyFrenchFries
     };
 
-    public static Dictionary<RewardFoodType, ItemType> RewardFoodTypeToItemTypeMapper =
+    public static IReadOnlyDictionary<RewardFoodType, ItemType> RewardFoodTypeToItemTypeMapper =
         new Dictionary<RewardFoodType, ItemType>()
         {
             { RewardFoodType.Glass, ItemType.FullGlass },
@@ -23,7 +23,7 @@ public static class GameUtil
             { RewardFoodType.FrenchFries, ItemType.FullFrenchFries },
         };
 
-    public static Dictionary<ItemType, ItemType> ItemTypeToNextItemType = new Dictionary<ItemType, ItemType>()
+    public static IReadOnlyDictionary<ItemType, ItemType> ItemTypeToNextItemType = new Dictionary<ItemType, ItemType>()
     {
         { ItemType.EmptyGlass, ItemType.FullGlass },
         { ItemType.FullGlass, ItemType.EmptyGlass },

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PopupManager : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private BasePopup gameOverPopup;
     [SerializeField] private MainManager mainManager;
     private IGameEvents _mainManager;
-    private bool isReady = false;
 
     public event Action StartGameEvent = delegate { };
     public event Action RestartGameEvent = delegate { };
@@ -51,7 +49,6 @@ public class PopupManager : MonoBehaviour
 
     private void OnReadyGameEvent()
     {
-        isReady = true;
         welcomePopup.button.gameObject.SetActive(true);
     }
 

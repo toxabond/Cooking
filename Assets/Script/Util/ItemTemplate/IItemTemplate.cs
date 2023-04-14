@@ -3,9 +3,9 @@
 public interface IItemTemplate
 {
     ItemType[] GetDestroyItemType();
-    Dictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper();
+    IReadOnlyDictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper();
 
     ItemType[] GetItemTypeListForInventory();
     InventoryModel CreateInventory();
-    Dictionary<ItemType, ItemType> GetItemTypeToNextItemType();
+    IReadOnlyDictionary<ItemType, ItemType> GetItemTypeToNextItemType();
 }

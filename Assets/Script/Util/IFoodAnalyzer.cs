@@ -2,8 +2,8 @@
 
 public interface IFoodAnalyzer
 {
-    List<ItemType> GetDestroyItemType();
-    Dictionary<RewardFoodType, ItemType> RewardFoodTypeToItemTypeMapper();
+    IReadOnlyList<ItemType> GetDestroyItemType();
+    IReadOnlyDictionary<RewardFoodType, ItemType> RewardFoodTypeToItemTypeMapper();
     InventoryModel CreateInventory(ItemType itemType);
-    Dictionary<ItemType, ItemType> ItemTypeToNextItemType();
+    IReadOnlyDictionary<ItemType, ItemType> ItemTypeToNextItemType();
 }

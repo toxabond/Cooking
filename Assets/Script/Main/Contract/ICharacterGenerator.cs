@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface ICharacterGenerator
 {
-    void Init(LevelConfig levelConfig, List<Transform> uiCharacterPlace, GameModel gameModel);
+    void Init(LevelConfig levelConfig, IReadOnlyList<Transform> uiCharacterPlace, GameModel gameModel);
     bool TryCreateCharacter(Place place, CharacterBlockConfig block);
     bool HasReadyCharacter { get; }
     CharacterBlockConfig Dequeue();

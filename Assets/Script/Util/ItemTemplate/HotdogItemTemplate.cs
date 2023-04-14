@@ -10,7 +10,7 @@ public class HotdogItemTemplate : IItemTemplate
         };
     }
 
-    public Dictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
+    public IReadOnlyDictionary<RewardFoodType, ItemType> GetRewardFoodTypeToItemTypeMapper()
     {
         return new Dictionary<RewardFoodType, ItemType>()
         {
@@ -38,7 +38,7 @@ public class HotdogItemTemplate : IItemTemplate
         return new InventoryModel(list);
     }
 
-    public Dictionary<ItemType, ItemType> GetItemTypeToNextItemType()
+    public IReadOnlyDictionary<ItemType, ItemType> GetItemTypeToNextItemType()
     {
         return new Dictionary<ItemType, ItemType>()
         {

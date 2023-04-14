@@ -2,21 +2,22 @@
 using System.Linq;
 using ModestTree;
 
-public class FirstActualStrategy :IChoiceStrategy
+public class FirstActualStrategy : IChoiceStrategy
 {
-    private GameModel _gameModel;
+    private readonly GameModel _gameModel;
 
     public FirstActualStrategy(GameModel gameModel)
     {
-        this._gameModel = gameModel;
+        _gameModel = gameModel;
     }
 
-    public virtual Place GetActualTarget(ModifyItemType modifyItemType, List<Place> targetList)
+    public virtual Place GetActualTarget(ModifyItemType modifyItemType, IReadOnlyList<Place> targetList)
     {
         if (targetList == null || targetList.IsEmpty())
         {
             return null;
         }
+
         Place result = null;
         ItemModel itemModel;
         switch (modifyItemType)
@@ -25,26 +26,29 @@ public class FirstActualStrategy :IChoiceStrategy
                 foreach (var place in targetList)
                 {
                     itemModel = _gameModel.GetItemModelByPlace(place);
-                    if (itemModel!= null && GameUtil.DestroyedItemType.Contains(itemModel.Type))
+                    if (itemModel != null && GameUtil.DestroyedItemType.Contains(itemModel.Type))
                     {
                         result = place;
                         break;
                     }
                 }
+
                 break;
             case ModifyItemType.External:
                 itemModel = _gameModel.GetItemModelByPlace(targetList.First());
-                if (itemModel.Type!=ItemType.Playing && itemModel.IsReady())
+                if (itemModel.Type != ItemType.Playing && itemModel.IsReady())
                 {
                     result = targetList.First();
                 }
+
                 break;
             case ModifyItemType.Next:
                 itemModel = _gameModel.GetItemModelByPlace(targetList.First());
-                if (itemModel.Type!=ItemType.Playing && !GameUtil.DestroyedItemType.Contains(itemModel.Type))
+                if (itemModel.Type != ItemType.Playing && !GameUtil.DestroyedItemType.Contains(itemModel.Type))
                 {
                     result = targetList.First();
                 }
+
                 break;
             default:
                 result = targetList.First();
@@ -54,13 +58,14 @@ public class FirstActualStrategy :IChoiceStrategy
         return result;
     }
 
-    public virtual Place GetActualExternalTarget(ModifyItemType modifyItemType,Place targetPlace, ItemType itemType, List<Place> externalTargetList)
+    public virtual Place GetActualExternalTarget(ModifyItemType modifyItemType, Place targetPlace, ItemType itemType,
+        IReadOnlyList<Place> externalTargetList)
     {
         if (externalTargetList == null || externalTargetList.IsEmpty())
         {
             return null;
         }
-        
+
         Place result = null;
         switch (modifyItemType)
         {
@@ -73,6 +78,7 @@ public class FirstActualStrategy :IChoiceStrategy
                         break;
                     }
                 }
+
                 break;
             case ModifyItemType.External:
                 var itemModel = _gameModel.GetItemModelByPlace(targetPlace);
@@ -82,12 +88,14 @@ public class FirstActualStrategy :IChoiceStrategy
                     {
                         continue;
                     }
+
                     if (_gameModel.GetItemModelByPlace(place).CanApply(itemModel.Type))
                     {
                         result = place;
                         break;
                     }
                 }
+
                 break;
             case ModifyItemType.Apply:
                 foreach (var place in externalTargetList)
@@ -98,6 +106,7 @@ public class FirstActualStrategy :IChoiceStrategy
                         break;
                     }
                 }
+
                 break;
             default:
                 result = externalTargetList[0];

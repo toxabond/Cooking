@@ -3,9 +3,9 @@
 public class SequenceBehavior : IHandler
 {
     private int _index = 0;
-    private readonly List<IHandler> _sequence;
+    private readonly IReadOnlyList<IHandler> _sequence;
 
-    public SequenceBehavior(List<IHandler> sequence)
+    public SequenceBehavior(IReadOnlyList<IHandler> sequence)
     {
         _sequence = sequence;
         _index = 0;

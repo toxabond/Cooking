@@ -12,7 +12,7 @@ public class LowerTimeStrategy : FirstActualStrategy
             _gameModel = gameModel;
         }
 
-        public override Place GetActualTarget(ModifyItemType modifyItemType, List<Place> targetList)
+        public override Place GetActualTarget(ModifyItemType modifyItemType, IReadOnlyList<Place> targetList)
         {
             if (targetList == null || targetList.IsEmpty())
             {
@@ -23,8 +23,9 @@ public class LowerTimeStrategy : FirstActualStrategy
             return base.GetActualTarget(modifyItemType, list);
         }
 
-        public override Place GetActualExternalTarget(ModifyItemType modifyItemType, Place targetPlace, ItemType itemType,
-            List<Place> externalTargetList)
+        public override Place GetActualExternalTarget(ModifyItemType modifyItemType, Place targetPlace,
+            ItemType itemType,
+            IReadOnlyList<Place> externalTargetList)
         {
             if (externalTargetList == null || externalTargetList.IsEmpty())
             {
@@ -35,7 +36,7 @@ public class LowerTimeStrategy : FirstActualStrategy
             return base.GetActualExternalTarget(modifyItemType, targetPlace, itemType, list);
         }
 
-        private List<Place> Sort(List<Place> list)
+        private List<Place> Sort(IReadOnlyList<Place> list)
         {
             return list
                 .Where(p => p != null && _gameModel.ContainsKey(p))
