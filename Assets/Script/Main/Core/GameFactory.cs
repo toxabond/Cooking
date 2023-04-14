@@ -24,7 +24,7 @@ public class GameFactory : IGameFactory
         var list = new List<CharacterBlock>();
         foreach (var config in characterBlockConfigs)
         {
-            var foodItems = config.inventory.Select(i => GameUtil.MapperRewardFoodTypeToItemType[i]).ToList();
+            var foodItems = config.inventory.Select(i => GameUtil.RewardFoodTypeToItemTypeMapper[i]).ToList();
             list.Add(CreateCharacterBlock(config, characterPlace[config.position]));
         }
 
@@ -33,7 +33,7 @@ public class GameFactory : IGameFactory
 
     public CharacterBlock CreateCharacterBlock(CharacterBlockConfig characterBlockConfig, Transform place)
     {
-        var foodItems = characterBlockConfig.inventory.Select(i => GameUtil.MapperRewardFoodTypeToItemType[i]).ToList();
+        var foodItems = characterBlockConfig.inventory.Select(i => GameUtil.RewardFoodTypeToItemTypeMapper[i]).ToList();
         return new CharacterBlock(characterBlockConfig.createdTime, characterBlockConfig.position,
             CreateCharacter(characterBlockConfig.type, foodItems, place));
     }

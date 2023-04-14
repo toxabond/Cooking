@@ -127,6 +127,15 @@
      <Compile Include="Assets\Settings\Contract\ZoneCollectionSetting.cs" />
      <Compile Include="Assets\Script\Main\Contract\IZoneInitializer.cs" />
      <Compile Include="Assets\Script\Main\Contract\IMainController.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\IItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\CharacterItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\MeatItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\BurgerItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\HotdogItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\SausageItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\ItemTemplate\FrenchFriesItemTemplate.cs" />
+     <Compile Include="Assets\Script\Util\FoodAnalyzer.cs" />
+     <Compile Include="Assets\Script\Util\IFoodAnalyzer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

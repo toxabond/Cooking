@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class GameModel
@@ -21,7 +20,6 @@ public class GameModel
         GameTime = 0;
     }
 
-
     public bool ContainsKey(Place place)
     {
         return Models.ContainsKey(place.GetHashCode());
@@ -36,7 +34,6 @@ public class GameModel
 
         return Models[place.GetHashCode()].ItemModel;
     }
-
 
     public GameObjectModel GetGameObjectModelByPlace(Place place)
     {

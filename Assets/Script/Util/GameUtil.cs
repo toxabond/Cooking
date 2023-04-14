@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 
+
 public static class GameUtil
 {
-    public static ItemType[] DestroyedItemType = new ItemType[]
+    public static ItemType[] DestroyedItemType =
     {
         ItemType.None,
         ItemType.DestroyedCharacter,
@@ -13,7 +14,7 @@ public static class GameUtil
         ItemType.DestroyFrenchFries
     };
 
-    public static Dictionary<RewardFoodType, ItemType> MapperRewardFoodTypeToItemType =
+    public static Dictionary<RewardFoodType, ItemType> RewardFoodTypeToItemTypeMapper =
         new Dictionary<RewardFoodType, ItemType>()
         {
             { RewardFoodType.Glass, ItemType.FullGlass },
@@ -48,7 +49,7 @@ public static class GameUtil
         { ItemType.Phase1FrenchFries, ItemType.FullFrenchFries },
         { ItemType.FullFrenchFries, ItemType.DestroyFrenchFries },
     };
-    
+
     public static InventoryModel CreateInventory(ItemType itemType)
     {
         InventoryModel result;
