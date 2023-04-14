@@ -9,7 +9,6 @@ public class GameBuilder : IGameBuilder
     [Inject]public IGameFactory Factory;
 
     
-    // bind.BindPlaceWithView(new Place(2, 0), new ViewData(_ui.MeatPlace[0], null));
     public GameBuilder BindPlaceWithGameObjectModel(int idGroup, List<Transform> placeList, int fromIndex = 0,int toIndex=-1,
         ItemType itemType = ItemType.None)
     {
@@ -26,7 +25,6 @@ public class GameBuilder : IGameBuilder
         return this;
     }
 
-    // bind.BindPlaceWithData(new Place(2, 0), new ItemData(ItemType.DestroyMeat));
     public GameBuilder BindPlaceWithItemModel(int idGroup, int fromIndex, int toIndex, ItemType itemType)
     {
         for (var i = fromIndex; i <= toIndex; i++)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -8,15 +7,9 @@ public class Inventory : MonoBehaviour
 {
     public GameObject holder;
     private List<FoodIconItem> _activeItemCollection;
-    private FoodIconItem.Factory _foodIconItemFactory;
+    [Inject] private FoodIconItem.Factory _foodIconItemFactory;
 
-    [Inject]
-    private void Construct(FoodIconItem.Factory factory)
-    {
-        _foodIconItemFactory = factory;
-    }
-
-    public void InitItems(List<ItemType> itemList)
+    public void Init(List<ItemType> itemList)
     {
         _activeItemCollection = new List<FoodIconItem>();
         itemList.ForEach(itemType =>

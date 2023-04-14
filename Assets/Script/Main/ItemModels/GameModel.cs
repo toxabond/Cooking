@@ -29,7 +29,6 @@ public class GameModel
 
     public ItemModel GetItemModelByPlace(Place place)
     {
-        // return _itemModels[place.GetHashCode()];
         if (!Models.ContainsKey(place.GetHashCode()))
         {
             Debug.LogError("Don't found place:" + place);
@@ -41,7 +40,6 @@ public class GameModel
 
     public GameObjectModel GetGameObjectModelByPlace(Place place)
     {
-        // return _gameObjectModels[place.GetHashCode()];
         if (place == null || !Models.ContainsKey(place.GetHashCode()))
         {
             Debug.LogError("Don't found place:" + place);

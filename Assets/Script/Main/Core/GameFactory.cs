@@ -7,7 +7,7 @@ using Zenject;
 public class GameFactory : IGameFactory
 {
     [Inject] private GameModel _gameModel;
-    [Inject] private MainController _main;
+    [Inject] private IMainController _main;
     [Inject] private FoodItem.Factory _foodFactory;
     [Inject] private BaseCharacter.Factory _characterFactory;
     [Inject] private CharacterSetting _characterSetting;
@@ -47,7 +47,7 @@ public class GameFactory : IGameFactory
         var character = CreateGameObjectCharacter(characterType, _startCharacterPlace);
         character.startPosition = _startCharacterPlace;
         character.targetPosition = characterPlace;
-        character.inventory.InitItems(inventory.CurrentItemList);
+        character.inventory.Init(inventory.CurrentItemList);
         var gameObjectModel = new CharacterGameObjectModel(characterPlace, character);
         var model = new Model
         {

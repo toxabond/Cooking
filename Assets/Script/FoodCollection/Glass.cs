@@ -11,7 +11,7 @@ public class Glass : FoodItem
     [Inject] private GlassSetting _glassSetting;
 
     [Inject] private IndicatorAnimation _animation;
-    
+
     private void Start()
     {
         SetProgress(0);
@@ -50,8 +50,4 @@ public class Glass : FoodItem
         progress.DOFillAmount(amount, _glassSetting.duration);
         _animation.AnimationProgress(amount, _glassSetting.duration, transform, indicatorPosition.position, action);
     }
-
-    // public class Factory : PlaceholderFactory<Glass>
-    // {
-    // }
 }

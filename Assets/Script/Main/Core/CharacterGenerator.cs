@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class CharacterGenerator : ICharacterGenerator
 {
-    [Inject] public MainController Main;
+    [Inject] public IMainController Main;
     [Inject] public GamedBind GamedBind;
     [Inject] public IGameFactory Factory;
 

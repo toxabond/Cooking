@@ -466,11 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef5af4624f381a4da64de9a87e8d0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneCollection:
-  - {fileID: 2815387281353840325, guid: 17a3302b6a5023c4cb34a503e5224358, type: 3}
   uiCollection:
-    CharacterProgress: {fileID: 1680576377}
-    GameTimerProgress: {fileID: 893201827}
+    characterProgress: {fileID: 1680576377}
+    gameTimerProgress: {fileID: 893201827}
   zoneHolder: {fileID: 712743934}
   popupManager: {fileID: 1515253209}
 --- !u!4 &689475341

@@ -5,7 +5,7 @@ namespace Script.Core.Behaviors
 {
     public class ApplyHandler : BaseHandler
     {
-        public ItemType itemType;
+        public ItemType ItemType;
 
         public override bool Execute()
         {
@@ -16,14 +16,14 @@ namespace Script.Core.Behaviors
             try
             {
                 var externalTargetPlace =
-                    Strategy.GetActualExternalTarget(ModifyItemType, null, itemType, ExternalItemList);
+                    Strategy.GetActualExternalTarget(ModifyItemType, null, ItemType, ExternalItemList);
                 if ( externalTargetPlace == null)
                 {
                     Debug.Log("Don't Found actual target");
                     return false;
                 }
-                
-                MainController.ApplyExecute(ModifyItemType, itemType, externalTargetPlace);
+
+                MainController.Apply(ModifyItemType, ItemType, externalTargetPlace);
                 return true;
             }
             catch (Exception e)

@@ -62,11 +62,11 @@ public class Zone00Initializer : IZoneInitializer
             .SubscriptionExternal(_ui.SausageId, _ui.SausageButtons, 1, _ui.HotdogId, 0, _config.hotdogPlaceAmount-1);
 
         var handler = Factory.CreateHandlerOnlyExternal<ApplyHandler>(ModifyItemType.Apply, _ui.HotdogId, 0, _config.hotdogPlaceAmount-1);
-        handler.itemType = ItemType.Cabbage;
+        handler.ItemType = ItemType.Cabbage;
         _ui.СabbageButton.onClick.AddListener(() => { handler.Execute(); });
 
         var handler1 = Factory.CreateHandlerOnlyExternal<ApplyHandler>(ModifyItemType.Apply, _ui.HotdogId, 0, _config.hotdogPlaceAmount-1);
-        handler1.itemType = ItemType.Mustard;
+        handler1.ItemType = ItemType.Mustard;
         _ui.MustardButton.onClick.AddListener(() => { handler1.Execute(); });
 
         Builder.SubscriptionExternal(_ui.HotdogId, _ui.HotdogButtons, 1, _ui.CharacterId, 0, _config.characterPlaceAmount-1);
@@ -91,11 +91,11 @@ public class Zone00Initializer : IZoneInitializer
             .SubscriptionExternal(_ui.MeatId, _ui.MeatButtons, 1, _ui.BurgerId, 0, _config.burgerPlaceAmount-1);
 
         var handler = Factory.CreateHandlerOnlyExternal<ApplyHandler>(ModifyItemType.Apply, _ui.BurgerId, 0, _config.burgerPlaceAmount-1);
-        handler.itemType = ItemType.Tomato;
+        handler.ItemType = ItemType.Tomato;
         _ui.СheeseButton.onClick.AddListener(() => { handler.Execute(); });
 
         var handler1 = Factory.CreateHandlerOnlyExternal<ApplyHandler>(ModifyItemType.Apply, _ui.BurgerId, 0, _config.burgerPlaceAmount-1);
-        handler1.itemType = ItemType.Cheese;
+        handler1.ItemType = ItemType.Cheese;
         _ui.TomatoButton.onClick.AddListener(() => { handler1.Execute(); });
 
         Builder.SubscriptionExternal(_ui.BurgerId, _ui.BurgerButtons, 1, _ui.CharacterId, 0, _config.characterPlaceAmount-1);

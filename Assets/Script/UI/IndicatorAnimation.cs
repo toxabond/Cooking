@@ -19,12 +19,9 @@
         {
             var indicator = _indicatorFactory.Create();
             var indicatorTransform = indicator.transform;
-            // var gameObjectTransform = gameObject.transform;
-
+            
             indicatorTransform.SetParent(parent.transform);
             indicatorTransform.position = position;
-
-        
 
             indicator.progress.fillAmount = amount;
             indicator.progress.DOFillAmount(0, duration).OnComplete(() =>

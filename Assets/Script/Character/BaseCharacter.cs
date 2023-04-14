@@ -12,7 +12,7 @@ public class BaseCharacter : MonoBehaviour, IItem
     public Image progress;
 
     [HideInInspector] public Transform startPosition;
-    [HideInInspector] public Transform targetPosition; //level.characterPosition[0].position
+    [HideInInspector] public Transform targetPosition;
     [Inject] private CharacterSetting _characterSetting;
     private ITimer _timer;
 

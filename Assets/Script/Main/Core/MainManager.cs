@@ -66,8 +66,8 @@ public class MainManager : MonoBehaviour, IGameEvents
         var characterModel = new CharacterModel(_levelConfig.CharacterAmount);
         _gameModel.Init(levelModel, characterModel);
 
-        uiCollection.CharacterProgress.Bind(_gameModel);
-        uiCollection.GameTimerProgress.Bind(_gameModel);
+        uiCollection.characterProgress.Bind(_gameModel);
+        uiCollection.gameTimerProgress.Bind(_gameModel);
 
         _initializer.Init(_levelConfig, _gameModel, uiElements);
     }

@@ -20,7 +20,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
     {
         Container.Bind<IndicatorAnimation>().To<IndicatorAnimation>().AsCached();
         Container.Bind<ILoader>().To<Loader>().AsSingle();
-        Container.Bind<MainController>().To<MainController>().AsSingle();
+        Container.Bind<IMainController>().To<MainController>().AsSingle();
         Container.Bind<GamedBind>().To<GamedBind>().AsSingle();
         Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
         Container.Bind<IGameBuilder>().To<GameBuilder>().AsSingle();

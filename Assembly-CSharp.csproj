@@ -73,9 +73,9 @@
      <Compile Include="Assets\Settings\Contract\CharacterBlockConfig.cs" />
      <Compile Include="Assets\Script\Main\Core\CharacterGenerator.cs" />
      <Compile Include="Assets\Script\Net\Loader.cs" />
-     <Compile Include="Assets\Script\Main\Core\UIElements.cs" />
+     <Compile Include="Assets\Script\Main\UI\UIElements.cs" />
      <Compile Include="Assets\Script\FoodCollection\FoodItem.cs" />
-     <Compile Include="Assets\Script\Main\Core\Zone.cs" />
+     <Compile Include="Assets\Script\Elements\Zone.cs" />
      <Compile Include="Assets\Script\UI\IndicatorAnimation.cs" />
      <Compile Include="Assets\Script\Main\ItemModels\ItemModel.cs" />
      <Compile Include="Assets\Script\Main\Contract\IGameEvents.cs" />
@@ -102,7 +102,7 @@
      <Compile Include="Assets\Script\Elements\BaseItem.cs" />
      <Compile Include="Assets\Script\EnumCollection\RewardFoodType.cs" />
      <Compile Include="Assets\Script\Main\Contract\ITickableUpdate.cs" />
-     <Compile Include="Assets\Script\Main\Core\UICollection.cs" />
+     <Compile Include="Assets\Script\Main\UI\UICollection.cs" />
      <Compile Include="Assets\Script\Main\ItemModels\Model.cs" />
      <Compile Include="Assets\Script\Main\Contract\ITimerContainer.cs" />
      <Compile Include="Assets\Script\Main\ItemModels\LevelModel.cs" />
@@ -126,6 +126,7 @@
      <Compile Include="Assets\Script\Main\Contract\ITickableCheck.cs" />
      <Compile Include="Assets\Settings\Contract\ZoneCollectionSetting.cs" />
      <Compile Include="Assets\Script\Main\Contract\IZoneInitializer.cs" />
+     <Compile Include="Assets\Script\Main\Contract\IMainController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

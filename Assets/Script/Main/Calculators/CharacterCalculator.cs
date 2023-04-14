@@ -25,7 +25,7 @@ public class CharacterCalculator : ICharacterCalculator, ITickableUpdate, ITicka
     {
         CheckWinGame(_gameModel.Models);
     }
-    
+
     private void CheckWinGame(Dictionary<int, Model> models)
     {
         var gameModelCharacterModel = _gameModel.CharacterModel;
@@ -51,10 +51,8 @@ public class CharacterCalculator : ICharacterCalculator, ITickableUpdate, ITicka
 
     private void TryCreateReadyCharacter()
     {
-        // while (_currentIndex < _blockList.Count && _blockList[_currentIndex].createdTime <= _gameModel.GameTime)
         while (_characterGenerator.HasReadyCharacter)
         {
-            // var block = _blockList[_currentIndex];
             var block = _characterGenerator.Dequeue();
             var place = new Place(0, block.position);
 
@@ -66,8 +64,6 @@ public class CharacterCalculator : ICharacterCalculator, ITickableUpdate, ITicka
             {
                 _waitBlockList.Add(block);
             }
-
-            // _currentIndex++;
         }
     }
 

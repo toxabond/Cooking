@@ -7,6 +7,6 @@ public abstract class BaseHandler : IHandler
     public List<Place> ExternalItemList;
     public IChoiceStrategy Strategy;
     public GameModel GameModel;
-    public MainController MainController;
+    public IMainController MainController;
     public abstract bool Execute();
 }

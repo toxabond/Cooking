@@ -42,7 +42,6 @@ public class Burger : FoodItem
                 break;
             default:
                 Debug.LogError( "Burger don't found ItemType:" + itemType);
-                // Debug.LogError("Burger don't found ItemType:" + itemType);
                 break;
         }
 

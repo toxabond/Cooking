@@ -16,8 +16,6 @@ public class CharacterItemCalculator : ITickableUpdate
 
     private void UpdateModel(float delta, Model model)
     {
-        // if (model.ItemModel is ITickableUpdate itemModel)
-        // {
         var previousType = model.ItemModel.Type;
         UpdateCharacterItem(delta, model.ItemModel);
         var currentType = model.ItemModel.Type;
@@ -33,7 +31,6 @@ public class CharacterItemCalculator : ITickableUpdate
                 model.GameObjectModel.Item.Disappear(() => { });
             }
         }
-        // }
     }
 
     private void UpdateCharacterItem(float delta, ItemModel model)
