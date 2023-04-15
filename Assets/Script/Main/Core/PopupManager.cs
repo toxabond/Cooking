@@ -1,21 +1,19 @@
 using System;
 using UnityEngine;
 
-public class PopupManager : MonoBehaviour
+public class PopupManager : MonoBehaviour, IPopupManager
 {
     [SerializeField] private WelcomePopup welcomePopup;
     [SerializeField] private BasePopup winPopup;
     [SerializeField] private BasePopup gameOverPopup;
-    [SerializeField] private MainManager mainManager;
-    private IGameEvents _mainManager;
+    private IGameEvents _gameEvents;
 
     public event Action StartGameEvent = delegate { };
     public event Action RestartGameEvent = delegate { };
-
-    private void Awake()
+    public void Init(IGameEvents gameEvents)
     {
-        _mainManager = mainManager;
-        mainManager = null;
+        _gameEvents = gameEvents;
+        gameObject.SetActive(true);
     }
 
     private void Start()
@@ -26,9 +24,9 @@ public class PopupManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainManager.ReadyGameEvent += OnReadyGameEvent;
-        _mainManager.GameOverEvent += OnGameOverEvent;
-        _mainManager.WinGameEvent += OnWinGameEvent;
+        _gameEvents.ReadyGameEvent += OnReadyGameEvent;
+        _gameEvents.GameOverEvent += OnGameOverEvent;
+        _gameEvents.WinGameEvent += OnWinGameEvent;
 
         welcomePopup.ClickEvent += OnStartGame;
         winPopup.ClickEvent += OnStartGame;
@@ -38,9 +36,9 @@ public class PopupManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _mainManager.ReadyGameEvent -= OnReadyGameEvent;
-        _mainManager.GameOverEvent -= OnGameOverEvent;
-        _mainManager.WinGameEvent -= OnWinGameEvent;
+        _gameEvents.ReadyGameEvent -= OnReadyGameEvent;
+        _gameEvents.GameOverEvent -= OnGameOverEvent;
+        _gameEvents.WinGameEvent -= OnWinGameEvent;
 
         welcomePopup.ClickEvent -= OnStartGame;
         winPopup.ClickEvent -= OnStartGame;

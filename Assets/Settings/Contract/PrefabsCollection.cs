@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [Serializable]
 public class PrefabsCollection
@@ -9,9 +10,11 @@ public class PrefabsCollection
     
     public FoodPrefab food;
     public FoodIconPrefab foodIcon;
+    public GameObject popupManager;
     
     [Header("Elements")] 
     public GameObject simpleIndicator;
+
 }
 
 [Serializable]

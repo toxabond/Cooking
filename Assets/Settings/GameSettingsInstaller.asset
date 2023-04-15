@@ -32,6 +32,7 @@ MonoBehaviour:
       burgerIcon: {fileID: 8447250376449451687, guid: 27c5a61d9a2098145afcd5ef80800a82, type: 3}
       hotdogIcon: {fileID: 936946271937433832, guid: 1dc9a94640ef94045a1b6c39e7a67053, type: 3}
       frenchFriesIcon: {fileID: 1908632454398725784, guid: 8f520e0dd51982c438bd201770bbdd2e, type: 3}
+    popupManager: {fileID: 3498323010183035428, guid: 4b709e735414d5d4585858ace021d370, type: 3}
     simpleIndicator: {fileID: 788358301081069295, guid: 093220a9cac10cf40beb4d05c9914f65, type: 3}
   characterSetting:
     moveTime: 3

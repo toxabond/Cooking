@@ -11,12 +11,12 @@ public class MainManager : MonoBehaviour, IGameEvents
 
     [SerializeField] private UICollection uiCollection;
     [SerializeField] private GameObject zoneHolder;
-    [SerializeField] private PopupManager popupManager;
 
     [Inject] private ILoader _loader;
     [Inject] private ZoneCollectionSetting _zoneCollection;
     [Inject] private LevelSetting _level;
     [Inject] private IZoneInitializer _initializer;
+    [Inject] private IPopupManager _popupManager;
     [Inject] private GameModel _gameModel;
 
     [Inject] private List<ITickableUpdate> _tickableUpdateList;
@@ -24,6 +24,11 @@ public class MainManager : MonoBehaviour, IGameEvents
 
     private Zone _zone;
     private LevelConfig _levelConfig;
+
+    private void Awake()
+    {
+        _popupManager.Init(this);
+    }
 
     private async void Start()
     {
@@ -41,14 +46,14 @@ public class MainManager : MonoBehaviour, IGameEvents
 
     private void OnEnable()
     {
-        popupManager.StartGameEvent += OnStartGameEvent;
-        popupManager.RestartGameEvent += OnRestartGameEvent;
+        _popupManager.StartGameEvent += OnStartGameEvent;
+        _popupManager.RestartGameEvent += OnRestartGameEvent;
     }
 
     private void OnDisable()
     {
-        popupManager.StartGameEvent -= OnStartGameEvent;
-        popupManager.RestartGameEvent -= OnRestartGameEvent;
+        _popupManager.StartGameEvent -= OnStartGameEvent;
+        _popupManager.RestartGameEvent -= OnRestartGameEvent;
     }
 
     private void OnStartGameEvent()
@@ -80,7 +85,7 @@ public class MainManager : MonoBehaviour, IGameEvents
     {
         try
         {
-            if (_gameModel.GameState != GameState.Playing)
+            if (_gameModel==null || _gameModel.GameState != GameState.Playing)
             {
                 return;
             }

@@ -135,6 +135,7 @@
      <Compile Include="Assets\Script\UI\Indicator.cs" />
      <Compile Include="Assets\Script\Zones\Zone00\Zone00Initializer.cs" />
      <Compile Include="Assets\Script\Main\Core\MainController.cs" />
+     <Compile Include="Assets\Script\Main\Contract\IPopupManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
